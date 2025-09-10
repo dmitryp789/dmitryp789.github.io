@@ -10,13 +10,13 @@
   }
 
   body {
-    background: Gray;
+    background: LightBlue;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   canvas {
-    border: 2px solid blue;
+    border: 2px solid black;
   }
   </style>
 </head>
@@ -98,7 +98,7 @@ function loop() {
   context.fillRect(apple.x, apple.y, grid-1, grid-1);
 
   // Рисуем змею
-  context.fillStyle = 'grey';
+  context.fillStyle = 'blue';
   snake.cells.forEach(function(cell, index) {
     context.fillRect(cell.x, cell.y, grid-1, grid-1);
 
