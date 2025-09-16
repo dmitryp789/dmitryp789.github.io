@@ -119,4 +119,27 @@ jobs:
           echo "==== Final CI/CD Report ====" > final_report.txt
 
           echo -e "\n### Index.html Check Report" >> final_report.txt
-          if [ -f reports/validation_report_ind
+          if [ -f reports/validation_report_index.txt ]; then
+            cat reports/validation_report_index.txt >> final_report.txt
+          else
+            echo "⚠️ Index report not found." >> final_report.txt
+          fi
+
+          echo -e "\n### HTMLHint Report" >> final_report.txt
+          if [ -f reports/validation_report_htmlhint.txt ]; then
+            cat reports/validation_report_htmlhint.txt >> final_report.txt
+          else
+            echo "⚠️ HTMLHint report not found." >> final_report.txt
+          fi
+
+          echo -e "\n### W3C Validation Report" >> final_report.txt
+          if [ -f reports/validation_report_w3c.txt ]; then
+            cat reports/validation_report_w3c.txt >> final_report.txt
+          else
+            echo "⚠️ W3C report not found." >> final_report.txt
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: final-report
+          path: final_report.txt
